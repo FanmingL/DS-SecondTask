@@ -9,13 +9,13 @@ _PID_val_st Chassis_right_val;
 _PID_val_st PitchS_val;
 _PID_val_st PitchP_val;
 sensor_setup_t sensor_setup;
-#define PositionPitch_P 1500.0f
-#define PositionPitch_I 600.0f
-#define PositionPitch_D 000.0f
-#define SpeedPitch_P 154.0f
+#define PositionPitch_P 1900.0f
+#define PositionPitch_I 800.0f
+#define PositionPitch_D 0.0f
+#define SpeedPitch_P 20.0f
 #define SpeedPitch_I 0.0f
 #define SpeedPitch_D 0.0f
-#define Chassis_P 30.0f
+#define Chassis_P 2.0f
 #define Chassis_I 0.0f
 #define Chassis_D 0.0f
 union _Pid_un_ pid_un;
@@ -49,7 +49,7 @@ void Para_ResetToFactorySetup(void)
 	Chassis_arg.kp=Chassis_P;
 	Chassis_arg.ki=Chassis_I;
 	Chassis_arg.kd=Chassis_D;
-	Chassis_arg.inc_hz=20.0f;
+	Chassis_arg.inc_hz=0.0f;
 	Chassis_arg.k_inc_d_norm=0.0;
 	Chassis_arg.k_pre_d=0.0f;
 	Chassis_arg.k_ff=0.0f;
@@ -57,7 +57,7 @@ void Para_ResetToFactorySetup(void)
 	PitchS_arg.kp=SpeedPitch_P;
 	PitchS_arg.ki=SpeedPitch_I;
 	PitchS_arg.kd=SpeedPitch_D;
-	PitchS_arg.inc_hz=20.0f;
+	PitchS_arg.inc_hz=00.0f;
 	PitchS_arg.k_inc_d_norm=0.0f;
 	PitchS_arg.k_pre_d=0.0f;
 	PitchS_arg.k_ff=0.0f;
