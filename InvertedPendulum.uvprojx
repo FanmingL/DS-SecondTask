@@ -147,7 +147,7 @@
             <RestoreSysVw>1</RestoreSysVw>
           </Target>
           <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>1</TargetSelection>
+          <TargetSelection>6</TargetSelection>
           <SimDlls>
             <CpuDll></CpuDll>
             <CpuDllArguments></CpuDllArguments>
@@ -161,7 +161,7 @@
             <PeripheralDll></PeripheralDll>
             <PeripheralDllArguments></PeripheralDllArguments>
             <InitializationFile></InitializationFile>
-            <Driver>BIN\UL2CM3.DLL</Driver>
+            <Driver>Segger\JL2CM3.dll</Driver>
           </TargetDlls>
         </DebugOption>
         <Utilities>
@@ -413,6 +413,31 @@
               <FileType>1</FileType>
               <FilePath>.\app\ControlTask.c</FilePath>
             </File>
+            <File>
+              <FileName>DataTransfer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\DataTransfer.c</FilePath>
+            </File>
+            <File>
+              <FileName>filter.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\filter.c</FilePath>
+            </File>
+            <File>
+              <FileName>mymath.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\mymath.c</FilePath>
+            </File>
+            <File>
+              <FileName>parameter.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\parameter.c</FilePath>
+            </File>
+            <File>
+              <FileName>pid.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\pid.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -442,6 +467,41 @@
               <FileName>timer.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\driver\timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\driver\gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>encoder.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\driver\encoder.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\driver\bsp.c</FilePath>
+            </File>
+            <File>
+              <FileName>usart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\driver\usart.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_flash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\driver\bsp_flash.c</FilePath>
+            </File>
+            <File>
+              <FileName>adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\driver\adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>pwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\driver\pwm.c</FilePath>
             </File>
           </Files>
         </Group>

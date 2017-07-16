@@ -3,7 +3,7 @@
 
 void TIM2_Configuration(void)	
 {
-     TIM_TimeBaseInitTypeDef tim;
+    TIM_TimeBaseInitTypeDef tim;
     RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2,ENABLE);
     tim.TIM_Period = 0xFFFFFFFF;
     tim.TIM_Prescaler = 84 - 1;	 //1M 的时钟  
@@ -20,8 +20,6 @@ void TIM2_IRQHandler()
 			  TIM_ClearITPendingBit(TIM2,TIM_IT_Update);
         TIM_ClearFlag(TIM2, TIM_FLAG_Update);
 		}
-
-
 }
 
 void delay_us(uint32_t us)										//用TIM2的计数值来做到精确延时
@@ -39,12 +37,20 @@ void delay_ms(uint32_t ms)
 
 uint32_t GetInnerLoop(int loop)								//用于获得精确的函数调用的周期
 {
-	static uint32_t Time[2][20]={0};//Time[0] is the last time, Time[1] is the new time;
+	static uint32_t Time[2][INERLOOPLENGTH]={0};//Time[0] is the last time, Time[1] is the new time;
 	Time[0][loop] = Time[1][loop];
 	Time[1][loop] = Get_Time_Micros();
 	return Time[1][loop]-Time[0][loop];
 }
 
+void InnerLoopInit(void)
+{
+	int i=0;
+	for (i=0;i<INERLOOPLENGTH;i++)
+	{
+		GetInnerLoop(i);
+	}
+}	
 void TIM6_Configuration(void)							
 {
     TIM_TimeBaseInitTypeDef  tim;

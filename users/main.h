@@ -8,5 +8,17 @@
 #include "key.h"
 #include "exti.h"
 #include "ControlTask.h"
+#include "encoder.h"
+#include "gpio.h"
+#include "bsp.h"
+#include "usart.h"
+#include "DataTransfer.h"
+#include "filter.h"
+#include "mymath.h"
+#include "pid.h"
+#include "parameter.h"
+#include "bsp_flash.h"
+#include "adc.h"
+#include "pwm.h"
 
 #endif
