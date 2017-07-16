@@ -11,11 +11,27 @@ static void Task_5ms(void)
 		
 		//DOWN();
 }
+int Speed_Dog=0,Speed_feed=100;
+
 static void Task_10ms(void)
 {
 	float inner_loop_time=GetInnerLoop(MS_10MS_TIME)/1000000.0f;
 		Refresh_Angle();
 	Refresh_Encoder();
+	if (my_abs(PAngle.speed)<300){
+	exp_angle = -PID_calculate( inner_loop_time,            //周期
+														0,				//前馈
+														0,				//期望值（设定值）
+														motor_encoder.speed,			//反馈值
+														&Theta_arg, //PID参数结构体
+														&Theta_val,	//PID数据结构体
+														0.3			//integration limit，积分限幅
+														 );			//输出	
+	}else 
+	{
+		exp_angle=0;
+	}
+	
 	position_out= PID_calculate( inner_loop_time,            //周期
 														0,				//前馈
 														exp_angle,				//期望值（设定值）
@@ -31,19 +47,22 @@ static void Task_10ms(void)
 														PAngle.speed,			//反馈值
 														&PitchS_arg, //PID参数结构体
 														&PitchS_val,	//PID数据结构体
-														1500			//integration limit，积分限幅
+														500			//integration limit，积分限幅
 														 );			//输出
-	
+	//if (my_abs(speed_out)<7000)speed_out=-speed_out;
 	chassis_out= -PID_calculate( inner_loop_time,            //周期
 														0,				//前馈
-														motor_encoder.speed+speed_out*9*inner_loop_time,				//期望值（设定值）
+														motor_encoder.speed+speed_out*6.0f*inner_loop_time,				//期望值（设定值）
 														motor_encoder.speed,			//反馈值
 														&Chassis_arg, //PID参数结构体
 														&Chassis_left_val,	//PID数据结构体
-														10			//integration limit，积分限幅
+														100			//integration limit，积分限幅
 														 );			//输出	
+	 
+	 
 	 chassis_out=LIMIT(chassis_out,-1000,1000);
-	if(PAngle.degree<135||PAngle.degree>240){
+	
+	if(PAngle.degree<120||PAngle.degree>240){
 		chassis_out=0;	
 		PWM_out=chassis_out;
 	}else{
@@ -55,6 +74,7 @@ static void Task_10ms(void)
 			PWM_out=(u16)(-(chassis_out));
 		}
 	}
+	
 }
 static void Task_20ms(void)
 {

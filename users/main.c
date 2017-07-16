@@ -18,7 +18,7 @@ int main()
 	circle_temp=motor_encoder.circle_cnt;
 	speed_temp=(int)(motor_encoder.speed*10);
 	deg_temp=(int)(motor_encoder.degree);
-	pangle_temp=(int)(PAngle.degree);
+	pangle_temp=(int)(PAngle.degree*10);
 	pangle_sp_temp=(int)(PAngle.speed);
 	if (speed_temp>=0)
 	{
@@ -79,6 +79,26 @@ int main()
 	{
 	LCD_DisplayString(80+11*6,180,16,"-");
 	LCD_DisplayNum(80+12*6,180,(u32)-chassis_out,4,16,0);
+	}
+	if (speed_out>=0)
+	{
+	LCD_DisplayString(80+11*6,210,16," ");
+	LCD_DisplayNum(80+12*6,210,(u32)speed_out,4,16,0);
+	}
+	else
+	{
+	LCD_DisplayString(80+11*6,210,16,"-");
+	LCD_DisplayNum(80+12*6,210,(u32)-speed_out,4,16,0);
+	}
+	if (exp_angle>=0)
+	{
+	LCD_DisplayString(80+11*6,240,16," ");
+	LCD_DisplayNum(80+12*6,240,(u32)100*exp_angle,4,16,0);
+	}
+	else
+	{
+	LCD_DisplayString(80+11*6,240,16,"-");
+	LCD_DisplayNum(80+12*6,240,(u32)-100*exp_angle,4,16,0);
 	}
 	delay_ms(30);
 	}

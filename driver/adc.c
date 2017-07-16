@@ -72,7 +72,7 @@ pendulum_st PAngle;
 void Refresh_Angle(void)
 {
 	float inner_loop=GetInnerLoop(PAngle_TIME)/1000000.0f;
-	PAngle.degree=(ADC_POSITION_LOWEST-Get_Adc(1))/ADC_MAX*360-8;
+	PAngle.degree=(ADC_POSITION_LOWEST-Get_Adc(1))/ADC_MAX*360.0f-6.5f;
 	LPF_1_(5,inner_loop,PAngle.degree,PAngle.degree);
 	if (PAngle.degree<0)PAngle.degree=360+PAngle.degree;
 	if (my_abs(PAngle.degree-PAngle.degree_old)>330){
