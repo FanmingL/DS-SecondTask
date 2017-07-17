@@ -22,7 +22,12 @@ sensor_setup_t sensor_setup;
 #define Chassis_I 0.0f
 #define Chassis_D 0.0f
 #define Theta_P 0.0f
+#if defined (TASK_3)
+#define Theta_I 0.5f
+#else 
 #define Theta_I 0.05f
+#endif
+
 #define Theta_D 0.0f
 
 union _Pid_un_ pid_un;

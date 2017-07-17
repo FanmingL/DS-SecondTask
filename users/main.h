@@ -1,6 +1,6 @@
 #ifndef _MAIN_H_
 #define _MAIN_H_
-
+#define TASK_1
 #include "stm32f4xx.h"
 #include "timer.h"
 #include "led.h"

@@ -1,6 +1,12 @@
 #include "main.h"
 float exp_angle=0.0f;
 int LowSpeedMode=0;
+
+#if defined (TASK_3)
+#define 						ChassisIntegrationLimit								0.3f
+#else 
+#define 						ChassisIntegrationLimit								2.0f
+#endif
 static void QP(float inner_loop_time)
 {
 	if (my_abs(PAngle.speed)<1100){
@@ -71,7 +77,7 @@ static void PID_Control(float inner_loop_time)
 														motor_encoder.speed,			//反馈值
 														&Theta_arg, //PID参数结构体
 														&Theta_val,	//PID数据结构体
-													2.0f			//integration limit，积分限幅
+														ChassisIntegrationLimit
 														 );			//输出	
 	}
 	else 
@@ -139,10 +145,13 @@ static void Task_10ms(void)
 	float inner_loop_time=GetInnerLoop(MS_10MS_TIME)/1000000.0f;
 	Refresh_Angle();
 	Refresh_Encoder();
-//	PID_Control(inner_loop_time);
-	if(PAngle.degree>150&&PAngle.degree<210)
+	#if defined TASK_3
+		PID_Control(inner_loop_time);
+	#else
+		if(PAngle.degree>150&&PAngle.degree<210)
 		PID_Control(inner_loop_time);
 		else QP(inner_loop_time);
+	#endif
 }
 static void Task_20ms(void)
 {
