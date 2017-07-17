@@ -21,8 +21,8 @@ sensor_setup_t sensor_setup;
 #define Chassis_P 1.7f
 #define Chassis_I 0.0f
 #define Chassis_D 0.0f
-#define Theta_P 0.01f
-#define Theta_I 0.0f
+#define Theta_P 0.0f
+#define Theta_I 0.05f
 #define Theta_D 0.0f
 
 union _Pid_un_ pid_un;
